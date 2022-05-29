@@ -1,6 +1,6 @@
-group1 = int(input())  # детей в 1 группе
-group2 = int(input())  # детей в 2 группе
-sum_group = group1 + group2  # общее колличество,детей
-remain = sum_group % 2  # Остаток от деления
-bed = sum_group // 2 + remain  # В 1 кровати до 2-х детей + остаток
-print(bed)
+group1 = int(input('Детей в группе:'))
+group2 = int(input('Детей в группе:'))
+bed_group1 = (group1 // 2) + group1 % 2
+bed_group2 = (group2 // 2) + group2 % 2
+print(bed_group2 + bed_group1)
+
