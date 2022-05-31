@@ -4,7 +4,7 @@ elementary = True  #  Если число простое = истина
 counter = 2  # Начинаем с 2
 while counter < num:
     if num % counter == 0:  # остаток от деления
-        elementary = False  # иначе сложное
+        elementary = False
     counter += 1
     break
 if elementary:
