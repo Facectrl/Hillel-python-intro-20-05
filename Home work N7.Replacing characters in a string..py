@@ -1,6 +1,6 @@
 text = input('Enter text: ')
 count = text.count('.')
-if text and text[-1] == ("."):
+if text in text[-1] == ("."):
    print("Количество предложений: ", count)
 else:
    print("Количество предложений: ", [count + 1])
