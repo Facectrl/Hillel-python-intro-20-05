@@ -6,7 +6,7 @@ arithmetic_mean = 0
 while True:
     x = input('enter: ')
     if not x:
-        print(('sum_digit:'), sum_digit, 'count:', count, 'max_digit:', max_digit, 'min_digit:', min_digit, 'arithmetic_mean:', arithmetic_mean, end=',')
+        print('sum_digit:', sum_digit, 'count:', count, 'max_digit:', max_digit, 'min_digit:', min_digit, 'arithmetic_mean:', arithmetic_mean)
         break
     count += 1
     num = int(x)
