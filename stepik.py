@@ -1,9 +1,5 @@
-user = 'Я написал строку'
-print(len(user))
-print(user[0], user[3], user[6], user[-14])
-print(user[:])
-print('copied with change с: ', user[:9] + 'FUCK' + user[10:])
-print(user.count('а'))
-print(user.find('н'))
-print(user[user.find('О'):])
-print(user.replace('а', 'n', len(user)))
+text: str = input("")
+text[:text.find(" ")]
+text[text.rfind(" "):]
+text[text.find(" "):text.rfind(" ")]
+print(text[:text.find(" ")], text[text.find(" "):text.rfind(" ")].replace('n', 'N'), text[text.rfind(" "):], sep='')
