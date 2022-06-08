@@ -1,8 +1,6 @@
-text = input('Enter text: ')
-count = text.count('.')
-if text in text[-1] == ("."):
-   print("Количество предложений: ", count)
-else:
-   print("Количество предложений: ", [count + 1])
+string = input('Enter text:')
+count = string.count('.')
+if string and string[-1] != ".":
+    count += 1
+print("Sentence: ", string.count('.'))
 
-#Очень много времени трачу на простые задачи..:(
