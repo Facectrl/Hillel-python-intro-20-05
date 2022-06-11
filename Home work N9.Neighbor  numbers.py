@@ -14,6 +14,10 @@ print('Random number list is: ', list1)
 X = int(input('Enter number to find: '))
 for i, l1 in enumerate(list1):  # Индексы в списке
     if l1 == X:  # Проверка есть ли число в списке
+        if i == 0:
+            print('Number begin in list:', list1[i + 1])
+            if i == len(list1) - 1:
+                print('Number end in list:', list1[i - 1])
         print("Number on the left: ", list1[i - 1], 'Number on the right : ', list1[i + 1])
         break  #выход из цикла,если нашёл число
 else:  #Если не нашёл

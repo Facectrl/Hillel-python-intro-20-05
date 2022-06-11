@@ -7,9 +7,11 @@ import random
 
 N = int(input('Enter number: '))
 list1 = [random.randint(0, N) for i in range(0, N)]  # Сгенерировать список случайных целых чисел от 0 до N
-for i, l1 in enumerate(list1):  # Индексы в списке
+print(list1)
+X = int(input('Enter X: '))
+for i, l1 in enumerate(list1):
     for j, l2 in enumerate(list1):
-         l1 + l2 == N:  # Если есть пара чисел, которые сумма которых равна N
+        if l1 + l2 == X:
             print(i, j)
             break
-print(i + j)
+
