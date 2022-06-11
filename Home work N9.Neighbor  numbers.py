@@ -19,7 +19,7 @@ for i, l1 in enumerate(list1):  # Индексы в списке
             print('Number begin in list:', list1[i + 1])
         elif i == len(list1) - 1:  # end
             print('Number end in list:', list1[i - 1])
-        else:  # Если нашёлся элемент в середине
+        else:  #
             print("Number on the left: ", list1[i - 1], 'Number on the right : ', list1[i + 1])
             break
 else:
