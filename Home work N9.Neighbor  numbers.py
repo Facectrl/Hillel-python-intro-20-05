@@ -11,8 +11,9 @@ import random
 N = int(input('Enter number: '))
 list1 = [random.randint(0, N) for i in range(0, N)]  # Сгенерировать список случайных целых чисел от 0 до N
 print('Random number list is: ', list1)
+X = int(input('Enter number to find: '))
 for i, l1 in enumerate(list1):  # Индексы в списке
-    if l1 == N:  # Проверка есть ли число в списке
+    if l1 == X:  # Проверка есть ли число в списке
         print("Number on the left: ", list1[i - 1], 'Number on the right : ', list1[i + 1])
         break  #выход из цикла,если нашёл число
 else:  #Если не нашёл
