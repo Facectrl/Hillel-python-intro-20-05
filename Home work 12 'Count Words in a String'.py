@@ -16,4 +16,3 @@ print("First five values: ", sorted(word_count().items(), key=lambda x: x[1], re
 
 
 
-

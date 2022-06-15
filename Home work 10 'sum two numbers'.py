@@ -14,9 +14,12 @@ for i, l1 in enumerate(list1):
     for j, l2 in enumerate(list1):
         if l1 + l2 == X:
             print(i, j)
-        break
-else:
-    print('No pair :( ')
+            continue
+        else:
+            break
 
-#  Есть понимание что решил  не по условию задачи...
+
+
+
+
 
