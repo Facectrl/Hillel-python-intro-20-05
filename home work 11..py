@@ -1,16 +1,19 @@
-Вам нужно вывести на экран те имена, которые встретились только один раз. set
-#Пользователь вводит список имен (например, детей в классе). Просто имена, вроде "Вася, Маша, /,...".
-#Вам нужно вывести на экран те имена, которые встретились только ЕДИНОЖДЫ.
-#То есть имена детей без тезки.
-#Решается с помощью цикла и множества (set).
-#
-user_name = [input('Введите имя: ')] # Вводим имя
-set_name = set(user_name)  # превращаем список в множество
-key: set_name.pop() # получаем первый элемент множества
-print(key)
-for i in set_name:
-    if i == key:  # если имя повторяется, то пропускаем
-        continue
-    print(i) # выводим имя
+def word_count(string=input("Enter a string: ")):
+    import re
 
-# Решил решить в последний момент.У ноута полетела ОС из за обновлений,не успел решить,буду ждать перездачи...сори...
+    string = re.sub(r'[^\w\s]', '', string)
+    string = string.lower()
+    string = string.split()
+    counts = dict()
+    for word in string:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+    return counts
+
+print("First five values: ", sorted(word_count().items(), key=lambda x: x[1], reverse=True)[:5])
+
+
+
+
