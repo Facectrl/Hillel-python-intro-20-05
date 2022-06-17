@@ -12,3 +12,4 @@ if elementary:
     print('Number is prime')
 else:
     print('Number is not prime')
+1

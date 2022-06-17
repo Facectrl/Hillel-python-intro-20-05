@@ -1,18 +1,18 @@
-import random
+translations = {
+    'apple': ['malum', 'pomum', 'popula'],
+    'fruit': ['baca', 'bacca', 'popum'],
+    'punishment': ['malum', 'multa']
+}
 
-N = int(input('Enter number: '))
-list1 = [random.randint(0, N) for i in range(0, N)]  # Сгенерировать список случайных целых чисел от 0 до N
-print('Random number list is: ', list1)
-X = int(input('Enter number to find: '))
-for i, l1 in enumerate(list1):  # Индексы в списке
-    if l1 == X:  # Проверка есть ли число в списке
-        if i == 0:  # if begin
-            print('Number begin in list:', list1[i + 1])
-        elif i == len(list1) - 1:  # end
-            print('Number end in list:', list1[i - 1])
-        else:  # Если нашёлся элемент в середине
-            print("Number on the left: ", list1[i - 1], 'Number on the right : ', list1[i + 1])
-            break
-else:
-    print('Number is not in the list')
+inv_dict = {}
 
+for key, value in translations.items():
+    for i in value:
+        if i in inv_dict:  # если значение в словаре есть
+            inv_dict[i].append(key)
+        else:
+            inv_dict[i] = [key]
+print(inv_dict)
+
+# словарь translations имеет неуникальные значения 'malum' один из ключей затрётся в новом словаре.
+# По этому использую метод append() для добавления значения в список.
