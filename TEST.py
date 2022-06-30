@@ -13,14 +13,14 @@ cities = ['Киев', 'Львов', 'Одесса', 'Днепропетровс�
 avialable_cities = list(cities)
 random.shuffle(avialable_cities)  # перемешиваем города
 answer_city = avialable_cities.pop()
-print(answer_city )
+print(answer_city)
 
 
 while True:
     user = input('Введите название города: ')
 
     if user.lower()[0] != answer_city .lower()[-1]:
-       print('не верно, начинатся должен с буквы', answer_city .lower()[-1])
+        print('не верно,город начинаться должен с буквы -->', answer_city .lower()[-1])
     elif user not in cities:
         print('нет такого города')
     elif user not in avialable_cities:
@@ -40,4 +40,4 @@ while True:
             city_found = True
             break
 
-print('Ваша цепочка:', answer_city , user)
+print('Ваша цепочка:', answer_city, user)
