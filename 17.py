@@ -19,8 +19,9 @@ print(answer_city)
 while True:
     user = input('Введите название города: ')
 
-    if user.lower()[0] != answer_city .lower()[-1]:
-        print('не верно,город начинаться должен с буквы -->', answer_city .lower()[-1])
+    if user.lower()[0] != answer_city.lower()[-1]:
+        print('не верно,город начинаться должен с буквы -->', answer_city[-1])
+        continue  # продолжаем игру
     elif user not in cities:
         print('нет такого города')
     elif user not in avialable_cities:
@@ -39,5 +40,10 @@ while True:
             print('Нет городов начинающихся с последней буквы', user[-1])
             city_found = True
             break
+    if answer_city[-1] == ("ы, й, ё, ь"):
+        print("Города на буквы ы, й, ё, ь в списке нет")
+
 
 print('Ваша цепочка:', answer_city, user)
+
+
