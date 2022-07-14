@@ -7,7 +7,7 @@ __init__ инициализирует объект класса и переда�
 
 class Counter:
     # установка максимального и минимального значений (так же начального значения счётчика)
-    def __init__(self, min_value, max_value):
+    def __init__(self, min_value, max_value) -> None:  # по умолчанию возврщает None
         self.min_value = min_value
         self.max_value = max_value
         self.counter = min_value
