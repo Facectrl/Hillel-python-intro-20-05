@@ -66,10 +66,6 @@ with open(r"C:\[Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv
                 coffee_sale[row[2]] += 1
 
 
-    def get_percent(dict_name: dict, key, value):
-        return  sales_month,round(value / sum(dict_name.values()) * 100, 2)
-    print('---------------',sales_month)
-
 
 
 
