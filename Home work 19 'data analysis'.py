@@ -1,7 +1,7 @@
 import csv
 
 
-def key_value_func(dict_name: dict, key: str, value: int):
+def key_value_func(dict_name: dict, key: str, value: int) -> dict:
     # функция для передачи key и value в словарь
 
     if key in dict_name:
