@@ -20,6 +20,7 @@ def percent_func(dict_name: dict, key: str, value: int):
         dict_name[key] = 0
     return dict_name
 
+    
 
 with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='')as csvfile:
     bakery_reader = csv.reader(csvfile, delimiter=',')
@@ -64,6 +65,8 @@ with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv"
         elif row[1] == 'Tea' and day_Type == 'Weekday':
             key_value_func(tea, day_Type, 1)
 
-    print('Количество продаж чайников по дням недели: ', tea)
-    print('Количество продаж кофейников по дням недели: ', coffee)
+    print('Количество продаж : ', tea)
+    print('Количество продаж : ', coffee)
     print('\n')
+
+
