@@ -1,5 +1,4 @@
 import csv
-import math
 
 
 def key_value_func(dict_name: dict, key: str, value: int):
@@ -22,9 +21,6 @@ def percent_func(dict_name: dict, key: str, value: int):
     return dict_name
 
 
-print('Функция для подсчета процентов продаж, сколько % пришлось на какой месяц', percent_func({}, 'А', 10))
-print('\n')
-
 with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='')as csvfile:
     bakery_reader = csv.reader(csvfile, delimiter=',')
     header = next(bakery_reader)  # первая строка игнорируется
@@ -34,13 +30,13 @@ with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv"
             top_15_product[row[1]] = 1
         else:
             top_15_product[row[1]] += 1
-    top_15_product = sorted(top_15_product.items (), key=lambda x: x[1], reverse=True)  #
+    top_15_product = sorted(top_15_product.items(), key=lambda x: x[1], reverse=True)  #
     print('Топ 15 популярных товаров: ', top_15_product[:15])
     print('\n')
 
 with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='') as csvfile:
     bakery_reader = csv.reader(csvfile, delimiter=',')
-    header = next (bakery_reader)  # первая строка игнорируется
+    header = next(bakery_reader)  # первая строка игнорируется
     time_dict = {}
     for row in bakery_reader:
         if row[2][11:13] not in time_dict:
@@ -48,7 +44,7 @@ with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv"
         else:
             time_dict[row[2][11:13]] += 1
     time_dict = sorted(time_dict.items(), key=lambda x: x[0], reverse=True)  # отсортировали по ключу
-    print ('Распределение продаж по часам работы пекарни: ', time_dict)
+    print('Распределение продаж по часам работы пекарни: ', time_dict)
     print('\n')
 
 with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='') as csvfile:
@@ -70,41 +66,4 @@ with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv"
 
     print('Количество продаж чайников по дням недели: ', tea)
     print('Количество продаж кофейников по дням недели: ', coffee)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""""
-# Передаю в функцию ключ и значение из строки в файле
-add_to_dict(top_15_product, 
-add_to_dict(sales_month, 
-add_to_dict(sales_hour_bakery, 
-add_to_dict(tea_sale,
-add_to_dict(coffee_sale
-
-print('Топ-15 популярных товаров:')
-for key, value in sorted(top_15_product.items(), key=lambda item: item[1], reverse=True)[:15]:
-    print(key, value)
-    """""
-
-
-
-
-
-
-
-
-
+    print('\n')
