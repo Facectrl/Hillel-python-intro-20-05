@@ -21,12 +21,6 @@ class Fop(abc.ABC):  # Для создания абстракции необхо
 
 # single tax до 10% от прожиточного минимума раз на квартал, с 1 января 2022 года - 1430,0 (6500,0 х 22%)
 
-
-class SingleTax(Fop):
-    def tax_calculation(self) -> float:
-        return self.turnover * 0.22
-
-
 class FopGroup(Fop, ABC):
 
     MAX_INCOME = 1085000    # 167 * 6500 максимальный доход предпринимателя это 167 размеров минимальных зарплат
@@ -81,22 +75,37 @@ class FopGroup3(Fop, ABC): # Класс FopGroup3 наследует класс 
 
 
 # В конце надо создать N ФОПов подать отчетность за них,
+
+#  и передать их всех на подсчет налогов и получить отчет
+
+class TaxInspector(ABC) :
+    def __init__(self, fop):
+        self.fop = fop
+
+    def tax_calculation(self, fop):
+        pass
+
+        if isinstance(fop, FopGroup):
+            return fop.tax_calculation()
+        elif isinstance(fop, FopGroup2):
+            return fop.tax_calculation()
+        elif isinstance(fop, FopGroup3):
+            return fop.tax_calculation()
+        else:
+            return "Неизвестный класс"
+
 FOP_Tiger = Fop("Tiger", 75810, 2334, Group_Fop.FOP_GROUP)
 FOP_Sandman = Fop("Sandman", 33310, 25554, Group_Fop.FOP_GROUP_3)
 FOP_Lion = Fop("Lion", 54310, 3454, Group_Fop.FOP_GROUP)
 FOP_Tiger2 = Fop("Tiger", 75810, 2334, Group_Fop.FOP_GROUP_2)
 
-#  и передать их всех на подсчет налогов и получить отчет
 
-class TaxInspector(ABC):
-    def __init__(self, fop):
-        self.fop = fop
+print(TaxInspector(FOP_Tiger).tax_calculation(FOP_Tiger))
+print(TaxInspector(FOP_Sandman).tax_calculation(FOP_Sandman))
+print(TaxInspector(FOP_Lion).tax_calculation(FOP_Lion))
+print(TaxInspector(FOP_Tiger2).tax_calculation(FOP_Tiger2))
 
-    def tax_calculation(self, fop):
-        if isinstance(fop, SingleTax):
-            return fop.tax_calculation()
-        elif isinstance(fop, FopGroup):
-            return fop.tax_calculation()
+
 
 
 

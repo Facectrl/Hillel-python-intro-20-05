@@ -1,4 +1,11 @@
-import csv
+import math
+
+top_15_products = {}
+tea = {}
+coffee = {}
+time_dict = {}  # Распределение продаж по часам работы пекарни
+percent_month = {}  # процент продаж по месяцам
+full_sales = 0
 
 
 def key_value_func(dict_name: dict, key: str, value: int) -> dict:
@@ -11,62 +18,47 @@ def key_value_func(dict_name: dict, key: str, value: int) -> dict:
     return dict_name
 
 
-def percent_func(dict_name: dict, key: str, value: int):
-    # функция для подсчета процентов продаж, сколько % пришлось на какой месяц
+data = open('Bakery.csv', 'r')
+while True:
+    row = data.readline().strip().split(',')
+    if row != '':
+        continue
+    break
+for row in data:
+    row = row.strip().split(',')
+    item = row.split(',')[1]  # название продукта
+    day_type = row.split(',')[-1]
+    data_time = row.split(',')[-3]
 
-    if key in dict_name:
-        dict_name[key] = round(dict_name[key] / value * 100, 2)  # 2 знака  после запятой
-    else:
-        dict_name[key] = 0
-    return dict_name
+    if item == 'Tea':
+        key_value_func (tea, day_type, 1)
+    elif item == 'Coffee':
+        key_value_func(coffee, day_type,1)
 
-    
+    key_value_func (top_15_products, item, 1)  # подсчет количества продаж по продуктам
+    full_sales += 1
+    key_value_func (percent_month, data_time[7:0], 1)
+    key_value_func(time_dict, data_time)  # продажи по часам работы пекарни
 
-with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='')as csvfile:
-    bakery_reader = csv.reader(csvfile, delimiter=',')
-    header = next(bakery_reader)  # первая строка игнорируется
-    top_15_product = {}
-    for row in bakery_reader:
-        if row[1] not in top_15_product:
-            top_15_product[row[1]] = 1
-        else:
-            top_15_product[row[1]] += 1
-    top_15_product = sorted(top_15_product.items(), key=lambda x: x[1], reverse=True)  #
-    print('Топ 15 популярных товаров: ', top_15_product[:15])
-    print('\n')
+data.close()
 
-with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='') as csvfile:
-    bakery_reader = csv.reader(csvfile, delimiter=',')
-    header = next(bakery_reader)  # первая строка игнорируется
-    time_dict = {}
-    for row in bakery_reader:
-        if row[2][11:13] not in time_dict:
-            time_dict[row[2][11:13]] = 1
-        else:
-            time_dict[row[2][11:13]] += 1
-    time_dict = sorted(time_dict.items(), key=lambda x: x[0], reverse=True)  # отсортировали по ключу
-    print('Распределение продаж по часам работы пекарни: ', time_dict)
-    print('\n')
 
-with open(r"C:\Users\True\Documents\GitHub\Hillel-python-intro-20-05\Bakery.csv", newline='') as csvfile:
-    bakery_reader = csv.reader(csvfile, delimiter=',')
-    header = next(bakery_reader)  # первая строка игнорируется
-    item = header[1]  # первая колонка из файла - название товара
-    day_Type = row[-1]  # день недели
-    tea = {}
-    coffee = {}
-    for row in bakery_reader:
-        if row[1] == 'Coffee' and day_Type == 'Weekend':
-            key_value_func(coffee, day_Type, 1)
-        elif row[1] == 'Coffee' and day_Type == 'Weekday':
-            key_value_func(coffee, day_Type, 1)
-        elif row[1] == 'Tea' and day_Type == 'Weekend':
-            key_value_func(tea, day_Type, 1)
-        elif row[1] == 'Tea' and day_Type == 'Weekday':
-            key_value_func(tea, day_Type, 1)
+print('Tea_weekday :', math.ceil(tea['Weekday'] / top_15_products['Tea'] * 100,))
+print('Coffee_weekday :', math.ceil(tea['Weekday'] / top_15_products['Coffee'] * 100))
+print('Tea_weekend :', math.ceil(tea['Weekend'] / top_15_products['Tea'] * 100))
+print('Coffee_weekend :', math.ceil(tea['Weekend'] / top_15_products['Coffee'] * 100))
+print()
 
-    print('Количество продаж : ', tea)
-    print('Количество продаж : ', coffee)
-    print('\n')
+print('top_15_products :', top_15_products)
+for key, value in sorted(top_15_products.items(), key=lambda x: x[1], reverse=True)[:15]:
+    print(key, value)
+
+    print('процент продаж по месяцам :', percent_month)
+    for key, value in sorted (percent_month.items(), key=lambda x: x[0], reverse=True):
+        print('percent_month :', key, float(value / full_sales * 100, 2))
+    print('Распределение продаж по часам работы пекарни:')
+    for key, value in sorted (time_dict.items (), key=lambda x: x[0], reverse=True):
+        print('time_dict :', key, float(value / full_sales * 100))
+
 
 
